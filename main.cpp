@@ -27,9 +27,9 @@ int main () {
     //
     // remove(m, rows);
     size_t rows = 4;
-    size_t lns[rows]{4ull, 2ull, 5ull, 1ull};
+    size_t lns[4]{4, 2, 5, 1};
     size_t n = 12;
-    int t[n]{5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 7, 8};
+    int t[12]{5, 5, 5, 5, 6, 6, 7, 7, 7, 7, 7, 8};
     int ** res = convert(t, n, lns, rows);
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < lns[i]; j++) {
@@ -84,13 +84,18 @@ void remove(int ** m, size_t rows) {
 int ** convert(const int * t, size_t n, size_t * lns, size_t rows) {
     int ** result = new int*[rows];
     size_t total = 0ull;
-    for (size_t i = 0ull; i < rows; ++i) {
-        result[i] = new int[lns[i]];
-        for (size_t j = 0ull; j < lns[i]; ++j) {
-            result[i][j] = t[total + j];
+    size_t i = 0ull;
+    try {
+        for (i; i < rows; ++i) {
+            result[i] = new int[n];
+            for (size_t j = 0ull; j < lns[i]; ++j) {
+                result[i][j] = t[total + j];
+            }
+            total += lns[i];
         }
-        total += lns[i];
+    } catch (...) {
+        remove(result, i);
+        throw;
     }
     return result;
 }
-
