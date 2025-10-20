@@ -30,8 +30,18 @@ int main () {
 void input(int ** m, size_t rows, size_t cols) {
     for (size_t i = 0ull; i < rows; i++) {
 	for (size_t j = 0ull; j < rows; j++) {
-	    std::cin >> matrix[i][j]
+	    std::cin >> m[i][j];
         }
+    }
+}
+
+void output(const int * const * m, size_t rows, size_t cols) {
+    for (size_t i = 0ull; i < rows; i++) {
+	std::cout << m[i][j];
+        for (size_t j = 1ull; j < rows; j++) {
+            std::cout << " " << m[i][j];
+        }
+	std::cout << "\n";
     }
 }
 
