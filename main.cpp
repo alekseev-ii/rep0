@@ -37,7 +37,7 @@ int main () {
         }
         std::cout << "\n";
     }
-
+    remove(res, rows);
 }
 
 
@@ -82,12 +82,21 @@ void remove(int ** m, size_t rows) {
 }
 
 int ** convert(const int * t, size_t n, size_t * lns, size_t rows) {
+
+    size_t temp = 0ull;
+    for (size_t i = 0ull; i < rows; ++i) {
+        temp += lns[i];
+    }
+    if (temp > n) {
+        throw std::out_of_range("sum lns must be lesser than n");
+    }
+
     int ** result = new int*[rows];
     size_t total = 0ull;
     size_t i = 0ull;
     try {
         for (i; i < rows; ++i) {
-            result[i] = new int[n];
+            result[i] = new int[lns[i]];
             for (size_t j = 0ull; j < lns[i]; ++j) {
                 result[i][j] = t[total + j];
             }
