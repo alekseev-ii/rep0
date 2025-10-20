@@ -48,7 +48,9 @@ void output(const int * const * m, size_t rows, size_t cols) {
 }
 
 int ** create(size_t rows, size_t cols) {
-    
+    int ** result = nullptr;
+
+    return result;
 }
 
 void remove(int ** m, size_t rows) {
