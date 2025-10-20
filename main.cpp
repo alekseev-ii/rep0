@@ -26,3 +26,12 @@ int main () {
 
     remove(m, rows, cols);
 }
+
+void input(int ** m, size_t rows, size_t cols) {
+    for (size_t i = 0ull; i < rows; i++) {
+	for (size_t j = 0ull; j < rows; j++) {
+	    std::cin >> matrix[i][j]
+        }
+    }
+}
+
