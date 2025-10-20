@@ -4,7 +4,8 @@
 int ** create(size_t rows, size_t cols);
 void remove(int ** m, size_t rows);
 void input(int ** m, size_t rows, size_t cols);
-void output(const int * const * m, size_t rows, size_t cols);  
+void output(const int * const * m, size_t rows, size_t cols);
+int ** convert(const int * t, size_t n, size_t * lns, size_t rows);
 
 int main () {
     size_t rows = 0, cols = 0;
@@ -66,5 +67,18 @@ void remove(int ** m, size_t rows) {
         delete[] m[i];
     }
     delete[] m;
+}
+
+int ** convert(const int * t, size_t n, size_t * lns, size_t rows) {
+    int ** result = new int*[rows];
+    size_t total = 0ull;
+    for (size_t i = 0ull; i < rows; ++i) {
+        result[i] = new int[lns[i]];
+        for (size_t j = 0ull; j < lns[i]; ++j) {
+            result[i][j] = t[total + j];
+        }
+        total += lns[i];
+    }
+    return result;
 }
 
