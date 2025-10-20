@@ -39,7 +39,7 @@ void input(int ** m, size_t rows, size_t cols) {
 
 void output(const int * const * m, size_t rows, size_t cols) {
     for (size_t i = 0ull; i < rows; ++i) {
-	std::cout << m[i][j];
+	std::cout << m[i][0];
         for (size_t j = 1ull; j < rows; ++j) {
             std::cout << " " << m[i][j];
         }
@@ -48,8 +48,16 @@ void output(const int * const * m, size_t rows, size_t cols) {
 }
 
 int ** create(size_t rows, size_t cols) {
-    int ** result = nullptr;
-
+    int ** result = new int*[rows];
+    size_t i = 0ull;
+    try {
+    	for (i < rows; ++i;) {
+            result[i] = new int[cols];
+        }
+    } catch (...) {
+	remove(result, i);
+	throw;
+    }
     return result;
 }
 
