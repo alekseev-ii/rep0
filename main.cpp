@@ -14,7 +14,13 @@ int main () {
     }
 
     int ** m = create(rows, cols);
+
     input(m, rows, cols);
+    if (!std::cin) {
+	remove(m, rows, cols);
+	return 1;
+    }
+
     output(m, rows, cols);
     std::cout << "\n";
 
